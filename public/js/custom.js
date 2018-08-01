@@ -57,17 +57,19 @@ $(function(){
         lang: 'tr-TR'
     });
 
-    $('.selectpicker').selectpicker({
-        style: 'btn-default'
-    });
-    //
-    $(".durum").bootstrapSwitch();
+    // $('.selectpicker').selectpicker({
+    //     style: 'btn-default'
+    // });
     //
 
-    $(".durum").on('switchChange.bootstrapSwitch', function(event, state) {
-        console.log(this); // DOM element
-        console.log(event); // jQuery event
-        console.log(state); // true | false
+    $(".durum").on("change",function(){
+
+        if($(this).prop('checked')){
+           state = 1
+        }else{
+            state =0
+        }
+
 
         $.ajax({
             data: {"durum": state,"id":$(this).data("id") },
@@ -79,7 +81,10 @@ $(function(){
 
             }
         });
-    });
+
+    })
+
+
 
 
 
